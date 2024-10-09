@@ -25,3 +25,237 @@ body {
     text-wrap: balance;
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #141414;
+  font-family: "Neue Montreal";
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.nav-item {
+  clip-path: polygon(0, 0, 100%, 0, 100%, 100%, 0, 100%);
+}
+
+.nav-item a {
+  position: relative;
+  top: 20px;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.35;
+}
+
+.nav-item a#active {
+  opacity: 1;
+}
+
+.container-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1em;
+}
+
+.container-wrapper .col {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.col .item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: gray;
+}
+
+.c-1,
+.c-3,
+.c-5 {
+  top: 100%;
+}
+
+.c-1 .item,
+.c-3 .item,
+.c-5 .item {
+  top: 100%;
+}
+
+.c-2 .item,
+.c-4 .item {
+  top: -100%;
+}
+
+@media (max-width: 900px) {
+  .slide-num {
+    text-align: left;
+    padding-left: 2em;
+    margin-bottom: 2.5em;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .icon,
+  .icon-2 {
+    padding: 0 1em;
+    font-size: 16px;
+  }
+
+  .preview img {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slider-images,
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-counter {
+  position: absolute;
+  bottom: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 24px;
+  display: flex;
+  gap: 0.5rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.slider-counter > div {
+  flex: 1;
+}
+
+.slider-counter p {
+  line-height: 20px;
+}
+
+.counter {
+  position: relative;
+  top: 0;
+  will-change: transform;
+}
+
+.slider-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 64px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.slider-title-wrapper {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  will-change: transform;
+}
+
+.slider-title-wrapper p {
+  font-size: 50px;
+  line-height: 60px;
+}
+
+.slider-preview {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+  width: 35%;
+  height: 50px;
+  display: flex;
+  gap: 1em;
+}
+
+.preview {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+}
+
+.preview::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3 ease-in-out;
+}
+
+.preview.active::after {
+  background: rgba(0, 0, 0, 0);
+}
+
+.transition-opacity {
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 900px) {
+  .slider-indicators {
+    width: 90%;
+  }
+
+  .slider-preview {
+    width: 90%;
+    bottom: 5em;
+  }
+
+  .slider-title-wrapper p {
+    font-size: 30px;
+  }
+}
