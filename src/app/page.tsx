@@ -1,11 +1,13 @@
 "use client";
 
-import Slider from "../components/Slider";
 import NavBar from "@/components/Navbar";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
 import { Img1, Img2, Img3, Img4, Img5, Img6 } from "@/assets";
+import { useMenuAnimations, useSplashAnimations } from "@/hooks/useAnimations";
+import Hero from "@/components/Hero";
+import Overlay from "@/components/Overlay";
+import SubNav from "@/components/SubNav";
 
 const images: { [key: number]: StaticImageData } = {
   1: Img1,
@@ -14,66 +16,6 @@ const images: { [key: number]: StaticImageData } = {
   4: Img4,
   5: Img5,
   6: Img6,
-};
-
-const useGsapAnimations = (
-  imageMainRef: React.RefObject<HTMLDivElement>,
-  sliderMainRef: React.RefObject<HTMLDivElement>,
-  contentRef: React.RefObject<HTMLDivElement>
-) => {
-  useEffect(() => {
-    const tl = gsap.timeline({ delay: 0 });
-
-    const animateCols = (
-      colClass: string,
-      stagger: number,
-      position: number
-    ) => {
-      tl.to(
-        `.${colClass} .item`,
-        {
-          top: 0,
-          stagger,
-          duration: 3,
-          ease: "power4.inOut",
-        },
-        `-=${position}`
-      );
-    };
-
-    tl.to(".col", {
-      top: 0,
-      duration: 3,
-      ease: "power4.inOut",
-    });
-
-    animateCols("c-1", 0.25, 2);
-    animateCols("c-2", -0.25, 4);
-    animateCols("c-3", 0.25, 4);
-    animateCols("c-4", -0.25, 4);
-    animateCols("c-5", 0.25, 4);
-
-    tl.to(
-      ".container-wrapper",
-      {
-        scale: 5.4,
-        duration: 4,
-        ease: "power4.inOut",
-        onComplete: () => {
-          if (imageMainRef.current) {
-            gsap.to(imageMainRef.current, { opacity: 0, duration: 1 });
-          }
-          if (sliderMainRef.current) {
-            gsap.to(sliderMainRef.current, { opacity: 1, duration: 1 });
-          }
-          if (contentRef.current) {
-            gsap.to(contentRef.current, { opacity: 1, duration: 1 });
-          }
-        },
-      },
-      "-=2"
-    );
-  }, [imageMainRef, sliderMainRef, contentRef]);
 };
 
 const Col = ({
@@ -94,10 +36,18 @@ const Col = ({
 
 export default function Home() {
   const imageMainRef = useRef<HTMLDivElement>(null);
-  const sliderMainRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const menuItemsRef = useRef<HTMLDivElement>(null);
+  const subNavRef = useRef<HTMLDivElement>(null);
 
-  useGsapAnimations(imageMainRef, sliderMainRef, contentRef);
+  useSplashAnimations(imageMainRef, mainRef, contentRef);
+  const { isOpen, handleToggle } = useMenuAnimations(
+    overlayRef,
+    menuItemsRef,
+    subNavRef
+  );
 
   return (
     <>
@@ -110,12 +60,14 @@ export default function Home() {
       </div>
 
       <div className="content" ref={contentRef}>
-        <NavBar />
         <div
-          ref={sliderMainRef}
+          ref={mainRef}
           className="absolute inset-0 opacity-0 transition-opacity"
         >
-          <Slider />
+          <NavBar isOpen={isOpen} handleToggle={handleToggle} />
+          <Hero />
+          <Overlay ref={overlayRef} menuItemsRef={menuItemsRef} />
+          <SubNav ref={subNavRef} />
         </div>
       </div>
     </>

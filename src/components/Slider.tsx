@@ -5,6 +5,13 @@ import { gsap } from "gsap";
 import CustomEase from "gsap/CustomEase";
 import { Img1, Img2, Img3, Img4, Img5, Img6 } from "@/assets";
 import Image, { StaticImageData } from "next/image";
+import { Anton } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const images: { [key: number]: StaticImageData } = {
   1: Img1,
@@ -132,24 +139,24 @@ const Slider: React.FC = () => {
   };
 
   return (
-    <div className="slider" onClick={handleClick}>
-      <div className="img">
+    <div className={cn("slider", anton.className)} onClick={handleClick}>
+      <div className="img object-contain">
         {/* <Image src={images[1].src} alt="Img1" fill /> */}
       </div>
       <div className="slider-images" ref={sliderImagesRef}></div>
 
       <div className="slider-title">
-        <div className="slider-title-wrapper" ref={titlesRef}>
-          <p>The best choice</p>
-          <p>A good choice</p>
-          <p>Perfect choice</p>
-          <p>Best choice</p>
-          <p>Good choice</p>
-          <p>Perfect choice</p>
+        <div className="slider-title-wrapper text-white" ref={titlesRef}>
+          <p>The ultimate choice for digital innovation.</p>
+          <p>A smart solution for mobile excellence.</p>
+          <p>Crafting perfection in web design.</p>
+          <p>Your top partner in app development.</p>
+          <p>Delivering the best in game creation.</p>
+          <p>Empowering your digital success with precision. </p>
         </div>
       </div>
 
-      <div className="slider-counter">
+      <div className="slider-counter text-white text-sm">
         <div className="counter" ref={counterRef}>
           {Object.keys(images).map((key) => {
             return <p key={key}>{currentImg}</p>;
