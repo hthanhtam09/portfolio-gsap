@@ -9,7 +9,7 @@ const Overlay = forwardRef<
   return (
     <div
       ref={ref}
-      className={`fixed top-0 left-0 w-full h-full bg-[#141412] flex items-center justify-center opacity-0`}
+      className={`fixed top-0 left-0 w-full h-screen bg-[#141412] flex items-center justify-center -z-50 transition-opacity duration-500 ease-out`}
     >
       <div
         className="flex flex-col justify-between text-center text-[#cdc6be]"

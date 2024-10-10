@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
-
-gsap.registerPlugin(CSSRulePlugin);
 
 export const useSplashAnimations = (
   imageMainRef: React.RefObject<HTMLDivElement>,
@@ -70,52 +67,61 @@ export const useMenuAnimations = (
   subNavRef: React.RefObject<HTMLDivElement>
 ) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const timeline = gsap.timeline({ paused: true });
+  const timeline = useRef<GSAPTimeline | null>(null);
 
   useEffect(() => {
-    if (overlayRef.current && menuItemsRef.current && subNavRef.current) {
-      gsap.set(menuItemsRef.current, {
-        y: 225,
-      });
-
-      timeline.to(overlayRef.current, {
-        duration: 1.5,
-        ease: "power4.inOut",
-        opacity: 1,
-      });
-
-      timeline.to(
-        menuItemsRef.current,
-        {
-          duration: 1.5,
-          y: 0,
-          stagger: 0.2,
-          ease: "power4.inOut",
-        },
-        "-=1"
-      );
-
-      timeline.to(
-        subNavRef.current,
-        {
-          bottom: "10%",
-          opacity: 1,
-          duration: 0.5,
-          delay: 0.5,
-        },
-        "<"
-      );
+    if (overlayRef.current) {
+      gsap.set(overlayRef.current, { opacity: 0 });
+    }
+    if (menuItemsRef.current) {
+      gsap.set(menuItemsRef.current, { y: 225 });
+    }
+    if (subNavRef.current) {
+      gsap.set(subNavRef.current, { bottom: "50%", opacity: 0 });
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    timeline.current = gsap.timeline({ paused: true });
+
+    timeline.current.to(overlayRef.current, {
+      duration: 1.5,
+      ease: "power4.inOut",
+      zIndex: 1,
+      opacity: 1,
+    });
+
+    timeline.current.to(
+      menuItemsRef.current,
+      {
+        duration: 1.5,
+        y: 0,
+        stagger: 0.2,
+        ease: "power4.inOut",
+      },
+      "-=1"
+    );
+
+    timeline.current.to(
+      subNavRef.current,
+      {
+        bottom: "10%",
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.5,
+        zIndex: 1,
+      },
+      "<"
+    );
+
+    return () => {
+      timeline.current?.kill();
+    };
   }, [overlayRef, menuItemsRef, subNavRef]);
 
   const handleToggle = () => {
-    if (!isOpen) {
-      timeline.play();
+    if (isOpen) {
+      timeline.current?.reverse();
     } else {
-      timeline.restart();
+      timeline.current?.play();
     }
 
     setIsOpen((prev) => !prev);
