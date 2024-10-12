@@ -26,8 +26,8 @@ const Overlay = forwardRef<
           </a>
         </div>
         <div className="text-9xl">
-          <a href="/projects" className="hover:tracking-wider transition-all">
-            Projects
+          <a href="/project" className="hover:tracking-wider transition-all">
+            Project
           </a>
         </div>
         <div className="text-9xl">

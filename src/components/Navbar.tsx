@@ -1,16 +1,19 @@
+import { capitalizeFirstLetter } from "@/lib/utils";
 import React from "react";
 
 const NavBar = ({
+  title,
   isOpen,
   handleToggle,
 }: {
+  title: string;
   isOpen: boolean;
   handleToggle: () => void;
 }) => {
   return (
     <nav className="fixed w-full flex justify-between items-center p-6 text-[#cdc6be] mix-blend-difference z-10">
       <div>
-        <p>Home</p>
+        <p>{capitalizeFirstLetter(title)}</p>
       </div>
       <div>
         <p className="text-center text-3xl">

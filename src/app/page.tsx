@@ -63,7 +63,7 @@ export default function Home() {
           ref={mainRef}
           className="absolute inset-0 opacity-0 transition-opacity"
         >
-          <NavBar isOpen={isOpen} handleToggle={handleToggle} />
+          <NavBar title="home" isOpen={isOpen} handleToggle={handleToggle} />
           <Hero />
           <Overlay ref={overlayRef} menuItemsRef={menuItemsRef} />
           <SubNav ref={subNavRef} />
