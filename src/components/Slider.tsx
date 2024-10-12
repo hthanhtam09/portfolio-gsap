@@ -147,32 +147,34 @@ const Slider: React.FC = () => {
   };
 
   return (
-    <div className={cn("slider", anton.className)} onClick={handleClick}>
-      <div className="img object-contain"></div>
-      <div className="slider-images" ref={sliderImagesRef}></div>
+    <div className={cn("slider", anton.className)}>
+      <div onClick={handleClick}>
+        <div className="img object-contain"></div>
+        <div className="slider-images" ref={sliderImagesRef}></div>
 
-      <div className="slider-title">
-        <div className="slider-title-wrapper text-white" ref={titlesRef}>
-          <p>The ultimate choice for digital innovation.</p>
-          <p>A smart solution for mobile excellence.</p>
-          <p>Crafting perfection in web design.</p>
-          <p>Your top partner in app development.</p>
-          <p>Delivering the best in game creation.</p>
-          <p>Empowering your digital success with precision.</p>
+        <div className="slider-title">
+          <div className="slider-title-wrapper text-white" ref={titlesRef}>
+            <p>The ultimate choice for digital innovation.</p>
+            <p>A smart solution for mobile excellence.</p>
+            <p>Crafting perfection in web design.</p>
+            <p>Your top partner in app development.</p>
+            <p>Delivering the best in game creation.</p>
+            <p>Empowering your digital success with precision.</p>
+          </div>
         </div>
-      </div>
 
-      <div className="slider-counter text-white text-sm">
-        <div className="counter" ref={counterRef}>
-          {Object.keys(images).map((key) => (
-            <p key={key}>{currentImg}</p>
-          ))}
-        </div>
-        <div>
-          <p>&mdash;</p>
-        </div>
-        <div>
-          <p>{totalSliders}</p>
+        <div className="slider-counter text-white text-sm">
+          <div className="counter" ref={counterRef}>
+            {Object.keys(images).map((key) => (
+              <p key={key}>{currentImg}</p>
+            ))}
+          </div>
+          <div>
+            <p>&mdash;</p>
+          </div>
+          <div>
+            <p>{totalSliders}</p>
+          </div>
         </div>
       </div>
 
