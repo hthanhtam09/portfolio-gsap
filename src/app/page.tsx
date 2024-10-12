@@ -58,7 +58,6 @@ export default function Home() {
         <Col colClass="c-4" imageKeys={[3, 4, 5, 2, 1]} />
         <Col colClass="c-5" imageKeys={[3, 2, 6, 5, 1]} />
       </div>
-
       <div className="content" ref={contentRef}>
         <div
           ref={mainRef}
