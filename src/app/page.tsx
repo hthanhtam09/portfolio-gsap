@@ -7,7 +7,6 @@ import { Img1, Img2, Img3, Img4, Img5, Img6 } from "@/assets";
 import { useMenuAnimations, useSplashAnimations } from "@/hooks/useAnimations";
 import Hero from "@/components/Hero";
 import Overlay from "@/components/Overlay";
-import SubNav from "@/components/SubNav";
 
 const images: { [key: number]: StaticImageData } = {
   1: Img1,
@@ -40,14 +39,9 @@ export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
-  const subNavRef = useRef<HTMLDivElement>(null);
 
   useSplashAnimations(imageMainRef, mainRef, contentRef);
-  const { isOpen, handleToggle } = useMenuAnimations(
-    overlayRef,
-    menuItemsRef,
-    subNavRef
-  );
+  const { isOpen, handleToggle } = useMenuAnimations(overlayRef, menuItemsRef);
 
   return (
     <>
@@ -65,8 +59,11 @@ export default function Home() {
         >
           <NavBar title="home" isOpen={isOpen} handleToggle={handleToggle} />
           <Hero />
-          <Overlay ref={overlayRef} menuItemsRef={menuItemsRef} />
-          <SubNav ref={subNavRef} />
+          <Overlay
+            isOpen={isOpen}
+            ref={overlayRef}
+            menuItemsRef={menuItemsRef}
+          />
         </div>
       </div>
     </>

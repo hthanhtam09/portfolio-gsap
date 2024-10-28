@@ -6,7 +6,6 @@ import NavBar from "@/components/Navbar";
 import { useMenuAnimations } from "@/hooks/useAnimations";
 import { useRef } from "react";
 import Overlay from "@/components/Overlay";
-import SubNav from "@/components/SubNav";
 import { usePathname } from "next/navigation";
 
 export default function SubPageLayout({
@@ -17,13 +16,8 @@ export default function SubPageLayout({
   const pathName = usePathname();
   const overlayRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
-  const subNavRef = useRef<HTMLDivElement>(null);
 
-  const { isOpen, handleToggle } = useMenuAnimations(
-    overlayRef,
-    menuItemsRef,
-    subNavRef
-  );
+  const { isOpen, handleToggle } = useMenuAnimations(overlayRef, menuItemsRef);
 
   return (
     <AnimatePresence mode="wait">
@@ -34,8 +28,7 @@ export default function SubPageLayout({
           handleToggle={handleToggle}
         />
         {children}
-        <Overlay ref={overlayRef} menuItemsRef={menuItemsRef} />
-        <SubNav ref={subNavRef} />
+        <Overlay isOpen={isOpen} ref={overlayRef} menuItemsRef={menuItemsRef} />
       </FirstMountProvider>
     </AnimatePresence>
   );

@@ -11,7 +11,7 @@ const NavBar = ({
   handleToggle: () => void;
 }) => {
   return (
-    <nav className="fixed w-full flex justify-between items-center p-6 text-[#cdc6be] mix-blend-difference z-10">
+    <nav className="fixed w-full flex justify-between items-center p-6 text-[#cdc6be] mix-blend-difference z-[9999]">
       <div>
         <p>{capitalizeFirstLetter(title)}</p>
       </div>

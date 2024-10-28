@@ -4,12 +4,13 @@ const Overlay = forwardRef<
   HTMLDivElement,
   Readonly<{
     menuItemsRef: React.RefObject<HTMLDivElement>;
+    isOpen: boolean;
   }>
 >(({ menuItemsRef }, ref) => {
   return (
     <div
       ref={ref}
-      className={`fixed top-0 left-0 w-full h-screen bg-[#141412] flex items-center justify-center -z-50 transition-opacity duration-500 ease-out`}
+      className="fixed top-0 left-0 w-full h-screen bg-[#141412] flex items-center justify-center transition-opacity duration-500 ease-out -z-50"
     >
       <div
         className="flex flex-col justify-between text-center text-[#cdc6be]"

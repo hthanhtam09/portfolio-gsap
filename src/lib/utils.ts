@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const convertPathName = (pathName: string) => {
+  return pathName.replace(/-/g, " ");
+};
