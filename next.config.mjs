@@ -5,6 +5,9 @@ const nextConfig = {
     serviceIdEmail: process.env.SERVICE_ID_EMAIL,
     templateIdEmail: process.env.TEMPLATE_ID_EMAIL,
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
   // Custom Webpack configuration
   webpack: (config) => {
     // Add a rule to handle .glb files using file-loader

@@ -38,6 +38,7 @@ const Slider: React.FC = () => {
 
   useEffect(() => {
     animateSlide("right", currentImg); // Start with the first image on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateCounterAndTitlePosition = (newIndex: number) => {

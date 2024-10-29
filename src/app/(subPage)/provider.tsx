@@ -5,6 +5,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 const FirstMountContext = createContext({
   isFirstMount: true,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setIsFirstMount: (value: React.SetStateAction<boolean>) => {},
 });
 

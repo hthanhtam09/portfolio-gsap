@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from "framer-motion";
 import { Tilt } from "react-tilt";
 import gsap from "gsap";
