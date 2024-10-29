@@ -35,7 +35,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
       }}
       contentArrowStyle={{ borderRight: "7px solid  #fff" }}
       date={experience.date}
-      className="text-light dark:text-dark"
+      className="text-black"
       iconStyle={{ background: experience.iconBg }}
       icon={
         <div className="flex justify-center items-center w-full h-full">
@@ -49,11 +49,9 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
       }
     >
       <div>
-        <h3 className="text-light dark:text-dark text-[24px] font-bold">
-          {experience.title}
-        </h3>
+        <h3 className="text-black text-[24px] font-bold">{experience.title}</h3>
         <p
-          className="text-light dark:text-dark text-[16px] font-semibold"
+          className="text-black text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
           {experience.company_name}
@@ -64,7 +62,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         {experience.points.map((point, index: number) => (
           <li
             key={`${point}-${index}`}
-            className="text-light dark:text-dark text-[14px] pl-1 tracking-wider"
+            className="text-black text-[14px] pl-1 tracking-wider"
           >
             {point}
           </li>
@@ -78,12 +76,12 @@ const Experience: FC<ExperienceProps> = ({ profileKey }) => {
   const experiencesData = experiences[profileKey as keyof typeof experiences];
 
   return (
-    <motion.div className="relative z-50 my-20">
+    <motion.div className="relative z-50 my-28">
       <motion.div variants={textVariant()}>
-        <p className="sm:text-[18px] text-[14px] text-light dark:text-dark uppercase tracking-wider text-center">
+        <p className="sm:text-[18px] text-[14px] text-black uppercase tracking-wider text-center">
           What I have done so far
         </p>
-        <h2 className="text-light dark:text-dark font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center">
+        <h2 className="text-black font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center">
           Work Experience.
         </h2>
       </motion.div>

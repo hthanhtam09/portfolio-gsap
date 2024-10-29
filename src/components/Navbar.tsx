@@ -1,4 +1,5 @@
 import { capitalizeFirstLetter } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
 const NavBar = ({
@@ -10,6 +11,12 @@ const NavBar = ({
   isOpen: boolean;
   handleToggle: () => void;
 }) => {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const projectNameFromParams = params.get("name");
+
+  if (projectNameFromParams != null) return;
+
   return (
     <nav className="fixed w-full flex justify-between items-center p-6 text-[#cdc6be] mix-blend-difference z-[9999]">
       <div>

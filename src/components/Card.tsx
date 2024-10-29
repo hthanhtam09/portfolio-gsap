@@ -26,15 +26,12 @@ const Card = ({ index, title, icon, name, isProfile }: CardProps) => {
   useEffect(() => {
     if (isProfile) return;
     if (cardRef.current) {
-      const randomX = Math.floor(Math.random() * 40) - 20;
-      const randomY = Math.floor(Math.random() * 40) - 20;
-
       gsap.fromTo(
         cardRef.current,
-        { x: randomX, y: randomY },
+        { x: 0, y: -30 },
         {
-          x: randomX + 10,
-          y: randomY + 10,
+          x: 20,
+          y: 30,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
@@ -71,11 +68,11 @@ const Card = ({ index, title, icon, name, isProfile }: CardProps) => {
         >
           <img src={icon.src} alt="member" className="w-16 h-16 rounded-full" />
           {!isProfile && (
-            <span className="dark:text-dark text-light text-[20px] font-bold text-center">
+            <span className="text-black text-[20px] font-bold text-center">
               {name.replace(/-/g, " ")}
             </span>
           )}
-          <h3 className="dark:text-dark text-light text-[16px] font-light text-center">
+          <h3 className="text-black text-[16px] font-light text-center">
             {title}
           </h3>
         </div>

@@ -9,13 +9,14 @@ import { profiles } from "@/constants";
 import Card from "@/components/Card";
 import { useSearchParams } from "next/navigation";
 import Intro from "@/components/Intro";
+import Experience from "@/components/Experience";
+import TechSkill from "@/components/TechSkill";
 
 const OverviewPage: FC = () => {
   const { isFirstMount: isFirstMountSubPage } = useFirstMountSubPage();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
   const profileNameFromParams = params.get("name");
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -27,10 +28,10 @@ const OverviewPage: FC = () => {
           gap: 30,
           duration: 1.5,
           ease: "power2.out",
-          position: "absolute",
+          position: "fixed",
           top: 0,
-          right: -10,
-          zIndex: 99998,
+          right: 0,
+          zIndex: 998,
         });
       }
     }
@@ -40,7 +41,7 @@ const OverviewPage: FC = () => {
     window.history.replaceState(null, "", "/overview");
     gsap.set(cardRef.current, {
       scale: 1,
-      position: "absolute",
+      position: "fixed",
       top: "50%",
       right: "50%",
     });
@@ -51,24 +52,32 @@ const OverviewPage: FC = () => {
       {isFirstMountSubPage ? (
         <NavigateTransition />
       ) : (
-        <div
-          className="bg-[#cdc6be] w-full h-screen overflow-y-auto flex items-center justify-center relative"
-          ref={containerRef}
-        >
-          <section className="mt-20">
-            <div ref={cardRef} className="flex flex-wrap justify-center gap-10">
-              {profiles.map((profile, index) => (
-                <Card
-                  key={`${profile.title}_${index}`}
-                  index={index}
-                  {...profile}
-                />
-              ))}
-            </div>
-            {profileNameFromParams != null && (
-              <Intro profileKey={profileNameFromParams} />
-            )}
-          </section>
+        <div className="bg-[#cdc6be] w-full h-screen overflow-y-auto overflow-x-hidden relative">
+          <div
+            ref={cardRef}
+            className="flex flex-wrap justify-center gap-10 items-center h-screen"
+          >
+            {profiles.map((profile, index) => (
+              <Card
+                key={`${profile.title}_${index}`}
+                index={index}
+                {...profile}
+              />
+            ))}
+          </div>
+          {profileNameFromParams != null && (
+            <>
+              <section className="w-screen">
+                <Intro profileKey={profileNameFromParams} />
+              </section>
+              <section className="w-screen">
+                <Experience profileKey={profileNameFromParams} />
+              </section>
+              <section className="w-screen">
+                <TechSkill profileKey={profileNameFromParams} />
+              </section>
+            </>
+          )}
         </div>
       )}
     </motion.main>

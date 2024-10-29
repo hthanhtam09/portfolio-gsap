@@ -21,7 +21,7 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
   if (!profileData) return null;
 
   return (
-    <div className="relative w-full h-full z-50">
+    <div className="relative w-[80vw] h-full z-50">
       {profileImage && (
         <motion.div
           initial={{ translateX: 100, opacity: 0 }}
@@ -31,7 +31,7 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
             delay: 0.5,
             duration: 2,
           }}
-          className="absolute top-0 right-[-25%] z-50 w-full h-full"
+          className="absolute top-0 right-[-40%] z-50 w-full h-full"
         >
           <Image
             src={profileImage.src}
@@ -51,7 +51,7 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
             delay: 0.5,
             duration: 2,
           }}
-          className="sm:text-[18px] text-[14px] text-light dark:text-dark uppercase tracking-wider"
+          className="sm:text-[18px] text-[14px] text-black uppercase tracking-wider"
         >
           Profile
         </motion.p>
@@ -63,7 +63,7 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
             delay: 1,
             duration: 2,
           }}
-          className="text-light dark:text-dark font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]"
+          className="text-black font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]"
         >
           {pathProfileName}
         </motion.h1>
@@ -75,7 +75,7 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
             delay: 1.2,
             duration: 2.5,
           }}
-          className="text-light dark:text-dark font-light md:text-[18px] sm:text-[18px] xs:text-[18px] text-[14px]"
+          className="text-black font-light md:text-[18px] sm:text-[18px] xs:text-[18px] text-[14px]"
         >
           - {profileData.position} -
         </motion.span>
@@ -97,16 +97,16 @@ const Intro = ({ profileKey }: { profileKey: string }) => {
             delay: 2,
             duration: 2,
           }}
-          className="mt-4 text-light dark:text-dark text-[17px] max-w-3xl leading-[30px] h-[150px] relative z-50"
+          className="mt-4 text-black text-[17px] max-w-3xl leading-[30px] h-[150px] relative z-50"
         >
           <QuoteIcon
             aria-hidden="true"
-            className="size-3 mr-1 fill-white stroke-none -translate-y-1 inline"
+            className="size-3 mr-1 fill-black stroke-none -translate-y-1 inline"
           />
           {profileData.description}
           <QuoteIcon
             aria-hidden="true"
-            className="size-3 ml-1 fill-white stroke-none translate-y-1 inline"
+            className="size-3 ml-1 fill-black stroke-none translate-y-1 inline"
           />
         </motion.p>
       </div>
