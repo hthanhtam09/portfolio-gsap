@@ -115,7 +115,6 @@ const ProjectPage = () => {
   const params = new URLSearchParams(searchParams.toString());
   const projectNameFromParams = params.get("name");
   const pathProjectName = convertPathName(projectNameFromParams ?? "");
-  console.log("pathProjectName", pathProjectName);
   const projectData =
     projectDetail[pathProjectName as keyof typeof projectDetail];
   const [pathName1, pathName2] = pathProjectName.split(" ");
@@ -130,7 +129,11 @@ const ProjectPage = () => {
   };
 
   const navigateProjectHome = () => {
-    router.back();
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/project");
+    }
   };
 
   useEffect(() => {
