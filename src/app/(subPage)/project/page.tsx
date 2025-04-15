@@ -129,11 +129,7 @@ const ProjectPage = () => {
   };
 
   const navigateProjectHome = () => {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.push("/project");
-    }
+    router.push("/project");
   };
 
   useEffect(() => {
