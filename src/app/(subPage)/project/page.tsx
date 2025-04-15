@@ -28,16 +28,13 @@ type ProjectCardProps = {
   description: string;
   name: string;
   image: string;
-  source_code_link: string;
+  link: string;
   projectName: string | null;
 };
 
 // eslint-disable-next-line react/display-name
 const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
-  (
-    { index, name, description, tags, image, source_code_link, projectName },
-    ref
-  ) => {
+  ({ index, name, description, tags, image, link, projectName }, ref) => {
     const router = useRouter();
 
     const goToProjectsDetail = (projectName: string) => {
@@ -73,7 +70,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
                 <div
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent the parent click handler from firing
-                    window.open(source_code_link, "_blank");
+                    window.open(link, "_blank");
                   }}
                   className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
                 >
@@ -118,6 +115,7 @@ const ProjectPage = () => {
   const params = new URLSearchParams(searchParams.toString());
   const projectNameFromParams = params.get("name");
   const pathProjectName = convertPathName(projectNameFromParams ?? "");
+  console.log("pathProjectName", pathProjectName);
   const projectData =
     projectDetail[pathProjectName as keyof typeof projectDetail];
   const [pathName1, pathName2] = pathProjectName.split(" ");

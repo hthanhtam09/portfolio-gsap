@@ -9,7 +9,6 @@ export enum ThemeMode {
 }
 
 export enum ProjectName {
-  CARRENT = "Car Rent",
-  JOBIT = "Job IT",
-  TRIPGUIDE = "Trip Guide",
+  VITABLE = "Vitable",
+  LUVLINK = "Luvlink",
 }

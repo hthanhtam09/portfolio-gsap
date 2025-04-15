@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import CustomEase from "gsap/CustomEase";
-import { Img1, Img2, Img3, Img4, Img5, Img6 } from "@/assets";
+import { slider1, slider2, slider3, slider4, slider5 } from "@/assets";
 import Image, { StaticImageData } from "next/image";
 import { Anton } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -14,12 +14,11 @@ const anton = Anton({
 });
 
 const images: { [key: number]: StaticImageData } = {
-  1: Img1,
-  2: Img2,
-  3: Img3,
-  4: Img4,
-  5: Img5,
-  6: Img6,
+  1: slider1,
+  2: slider2,
+  3: slider3,
+  4: slider4,
+  5: slider5,
 };
 
 gsap.registerPlugin(CustomEase);
@@ -83,6 +82,7 @@ const Slider: React.FC = () => {
       autoAlpha: 1,
       duration: 1.5,
       ease: "power4.out",
+      opacity: 0.8,
     });
 
     gsap.fromTo(
@@ -97,6 +97,7 @@ const Slider: React.FC = () => {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         duration: 1.5,
         ease: "power4.out",
+        opacity: 0.8,
       }
     );
 
@@ -155,12 +156,11 @@ const Slider: React.FC = () => {
 
         <div className="slider-title">
           <div className="slider-title-wrapper text-white" ref={titlesRef}>
-            <p>The ultimate choice for digital innovation.</p>
-            <p>A smart solution for mobile excellence.</p>
-            <p>Crafting perfection in web design.</p>
-            <p>Your top partner in app development.</p>
-            <p>Delivering the best in game creation.</p>
-            <p>Empowering your digital success with precision.</p>
+            <p>Mobile apps with seamless performance.</p>
+            <p>Stunning websites, tailored for you.</p>
+            <p>Secure, responsive, and feature-rich solutions.</p>
+            <p>Stunning websites, tailored for you.</p>
+            <p>Expert team, ready to innovate.</p>
           </div>
         </div>
 
@@ -170,12 +170,8 @@ const Slider: React.FC = () => {
               <p key={key}>{currentImg}</p>
             ))}
           </div>
-          <div>
-            <p>&mdash;</p>
-          </div>
-          <div>
-            <p>{totalSliders}</p>
-          </div>
+          <p>&mdash;</p>
+          <p>{totalSliders}</p>
         </div>
       </div>
 

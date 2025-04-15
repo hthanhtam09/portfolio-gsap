@@ -3,18 +3,24 @@
 import NavBar from "@/components/Navbar";
 import { useRef } from "react";
 import Image, { StaticImageData } from "next/image";
-import { Img1, Img2, Img3, Img4, Img5, Img6 } from "@/assets";
+import { slider1, slider2, slider3, slider4, slider5 } from "@/assets";
 import { useMenuAnimations, useSplashAnimations } from "@/hooks/useAnimations";
 import Hero from "@/components/Hero";
 import Overlay from "@/components/Overlay";
 
 const images: { [key: number]: StaticImageData } = {
-  1: Img1,
-  2: Img2,
-  3: Img3,
-  4: Img4,
-  5: Img5,
-  6: Img6,
+  1: slider1,
+  2: slider2,
+  3: slider3,
+  4: slider4,
+  5: slider5,
+  6: slider1,
+  7: slider2,
+  8: slider3,
+  9: slider4,
+  10: slider5,
+  11: slider2,
+  12: slider3,
 };
 
 const Col = ({
@@ -27,7 +33,14 @@ const Col = ({
   <div className={`col ${colClass}`}>
     {imageKeys.map((key) => (
       <div className="item" key={key}>
-        <Image fill src={images[key]} alt="" />
+        <Image
+          src={images[key]}
+          alt={`Project ${key}`}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "auto" }}
+        />
       </div>
     ))}
   </div>
@@ -47,10 +60,10 @@ export default function Home() {
     <>
       <div className="container-wrapper">
         <Col colClass="c-1" imageKeys={[1, 2, 3, 4, 5]} />
-        <Col colClass="c-2" imageKeys={[6, 5, 2, 1, 3]} />
-        <Col colClass="c-3" imageKeys={[5, 6, 1, 2, 3]} />
-        <Col colClass="c-4" imageKeys={[3, 4, 5, 2, 1]} />
-        <Col colClass="c-5" imageKeys={[3, 2, 6, 5, 1]} />
+        <Col colClass="c-2" imageKeys={[11, 4, 9, 8, 7]} />
+        <Col colClass="c-3" imageKeys={[10, 6, 9, 2, 3]} />
+        <Col colClass="c-4" imageKeys={[8, 4, 5, 2, 1]} />
+        <Col colClass="c-5" imageKeys={[11, 2, 10, 5, 1]} />
       </div>
       <div className="content" ref={contentRef}>
         <div

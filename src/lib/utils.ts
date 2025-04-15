@@ -10,5 +10,8 @@ export function capitalizeFirstLetter(string: string) {
 }
 
 export const convertPathName = (pathName: string) => {
+  if (!pathName.includes("-")) {
+    return pathName;
+  }
   return pathName.replace(/-/g, " ");
 };

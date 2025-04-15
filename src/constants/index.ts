@@ -1,11 +1,8 @@
 import {
-  profileTam,
-  profileTho,
   gameIcon,
   webIcon,
   mobileIcon,
   databaseIcon,
-  project1,
   typescriptIcon,
   javascriptIcon,
   reactIcon,
@@ -20,6 +17,18 @@ import {
   mongodbIcon,
   reduxIcon,
   sassIcon,
+  profileTamDetail,
+  profileThoDetail,
+  slider1,
+  project1,
+  project2,
+  project3,
+  project4,
+  project5,
+  project6,
+  project7,
+  project8,
+  project9,
 } from "@/assets";
 import { ProfileName, ProjectName } from "@/enums";
 
@@ -41,12 +50,12 @@ export const navLinks = [
 export const profiles = [
   {
     title: "Software Engineer",
-    icon: profileTam,
+    icon: profileTamDetail,
     name: ProfileName.TAM,
   },
   {
     title: "Software Engineer",
-    icon: profileTho,
+    icon: profileThoDetail,
     name: ProfileName.THO,
   },
 ];
@@ -103,51 +112,28 @@ export const profileDetail = {
 
 export const projects = [
   {
-    name: "Car Rent",
-    description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+    name: ProjectName.VITABLE,
+    description: "Personalised vitamins. Simplify your health and wellbeing",
     tags: [
       {
-        name: "react",
+        name: "NextJS",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "PostgreSQL",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "NodeJS",
         color: "pink-text-gradient",
       },
     ],
     image: project1.src,
-    source_code_link: "https://github.com/",
+    link: "https://get.vitable.com.au/",
   },
   {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+    name: ProjectName.LUVLINK,
+    description: "Give the gift of connection with Friendship Lamps!",
     tags: [
       {
         name: "nextjs",
@@ -162,92 +148,8 @@ export const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project1.src,
-    source_code_link: "https://github.com/",
+    image: slider1.src,
+    link: "https://github.com/",
   },
 ];
 
@@ -473,9 +375,8 @@ export const technicalSkill = {
 };
 
 export const projectDetail = {
-  [ProjectName.CARRENT]: {
-    description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+  [ProjectName.VITABLE]: {
+    description: "Personalised vitamins. Simplify your health and wellbeing",
     technical: [
       {
         name: "ReactNative",
@@ -494,21 +395,24 @@ export const projectDetail = {
     images: [
       {
         src: project1.src,
-        alt: "project1",
+        alt: "image-project-1",
       },
       {
-        src: project1.src,
-        alt: "project1",
+        src: project2.src,
+        alt: "image-project-2",
       },
       {
-        src: project1.src,
-        alt: "project1",
+        src: project3.src,
+        alt: "image-project-3",
+      },
+      {
+        src: project4.src,
+        alt: "image-project-4",
       },
     ],
   },
-  [ProjectName.JOBIT]: {
-    description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+  [ProjectName.LUVLINK]: {
+    description: "Give the gift of connection with Friendship Lamps!",
     technical: [
       {
         name: "ReactJs",
@@ -523,53 +427,27 @@ export const projectDetail = {
         icon: postgresqlIcon.src,
       },
     ],
-    background: project1.src,
+    background: project5.src,
     images: [
       {
-        src: project1.src,
-        alt: "project1",
+        src: project5.src,
+        alt: "image-project-1",
       },
       {
-        src: project1.src,
-        alt: "project1",
+        src: project6.src,
+        alt: "image-project-2",
       },
       {
-        src: project1.src,
-        alt: "project1",
-      },
-    ],
-  },
-  [ProjectName.TRIPGUIDE]: {
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-
-    technical: [
-      {
-        name: "NextJS",
-        icon: nextjsIcon.src,
+        src: project7.src,
+        alt: "image-project-3",
       },
       {
-        name: "TailwindCSS",
-        icon: tailwindcssIcon.src,
+        src: project8.src,
+        alt: "image-project-4",
       },
       {
-        name: "NodeJS",
-        icon: nodejsIcon.src,
-      },
-    ],
-    background: project1.src,
-    images: [
-      {
-        src: project1.src,
-        alt: "project1",
-      },
-      {
-        src: project1.src,
-        alt: "project1",
-      },
-      {
-        src: project1.src,
-        alt: "project1",
+        src: project9.src,
+        alt: "image-project-5",
       },
     ],
   },
